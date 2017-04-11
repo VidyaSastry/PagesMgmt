@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
 
         if(accessToken!=null){
-            Log.i("Access",accessToken.toString());
+            Log.i("Access",accessToken.getToken());
             Intent intent = new Intent(this,HomeActivity.class);
             startActivity(intent);
         }
@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onSuccess(LoginResult loginResult) {
                 Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
                 startActivity(intent);
-                Log.i("AcessToken",loginResult.getAccessToken().toString());
+                Log.i("AcessToken",loginResult.getAccessToken().getToken());
             }
 
             @Override
