@@ -17,7 +17,7 @@ import java.util.List;
  * Created by Vidya on 4/10/17.
  */
 
-public class Controller {
+public class ViewController {
 
     public static final String PAGE_ID = "1138448119614327";
 
@@ -58,10 +58,14 @@ public class Controller {
             }
         });
     }
+
+
     
     public interface OnPostsFetchListener {
         void onSuccess(List<Post> postList);
         void onFailure(String message);
     }
+
+
 
 }

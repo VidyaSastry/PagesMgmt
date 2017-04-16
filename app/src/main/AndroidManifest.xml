@@ -21,7 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".screens.HomeActivity"></activity>
+        <activity android:name=".screens.HomeActivity" />
+        <activity android:name=".screens.CreatePostsActivity"></activity>
     </application>
 
 </manifest>

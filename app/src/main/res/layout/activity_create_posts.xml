@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.vidya.pagesmgmt.screens.CreatePostsActivity">
+    <EditText
+        android:id="@+id/post_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/borders"
+        android:maxLines="4"
+        android:lines="4"
+        android:hint="What would you like to share?"
+        android:layout_margin="20dp"
+        android:padding="10dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/post_content"
+        android:id="@+id/create_posts_button"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:padding="10dp"
+        android:background="@color/com_facebook_button_background_color"
+        android:text="Post"
+        android:textColor="#FFF"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/post_content"
+        android:id="@+id/save_posts_button"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:padding="10dp"
+        android:background="@color/com_facebook_button_background_color"
+        android:text="Save"
+        android:textColor="#FFF"
+        />
+
+</RelativeLayout>

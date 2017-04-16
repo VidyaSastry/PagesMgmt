@@ -31,10 +31,8 @@ public class AccessTokenGenerator {
                 new GraphRequest.Callback() {
                     @Override
                     public void onCompleted(GraphResponse response) {
-                        // TODO: 4/10/17 Parse accesstoken and send it on success
                         if(response.getError() == null) {
                             JSONObject res = response.getJSONObject();
-//                        Log.i("Result",res.toString());
                             try {
 
                                 JSONArray data = res.getJSONArray("data");
@@ -64,7 +62,7 @@ public class AccessTokenGenerator {
     }
 
     public interface OnAccessTokenGenerated {
-        public void onSuccess(AccessToken accessToken);
-        public void onFailure(FacebookRequestError error);
+        void onSuccess(AccessToken accessToken);
+        void onFailure(FacebookRequestError error);
     }
 }
