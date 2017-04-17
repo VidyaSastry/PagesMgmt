@@ -27,8 +27,6 @@ public class HomeActivity extends AppCompatActivity implements OnPostsFetchListe
 
     FloatingActionButton button;
 
-    List<Post> allPosts;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

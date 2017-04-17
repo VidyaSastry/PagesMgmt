@@ -6,10 +6,6 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
 
-/**
- * Created by Vidya on 4/10/17.
- */
-
 public class Feed {
 
 
@@ -43,7 +39,7 @@ public class Feed {
     }
 
     public interface OnFeedUpdateListener {
-        public void onFeedSuccess(GraphResponse response);
-        public void onFeedFailure(FacebookRequestError error);
+        void onFeedSuccess(GraphResponse response);
+        void onFeedFailure(FacebookRequestError error);
     }
 }

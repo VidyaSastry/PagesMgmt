@@ -17,7 +17,6 @@ public class AccessTokenGenerator {
 
 
     private GraphRequest graphRequest;
-//    private OnAccessTokenGenerated a;
 
     public AccessTokenGenerator(final OnAccessTokenGenerated a) {
         this.graphRequest = new GraphRequest(

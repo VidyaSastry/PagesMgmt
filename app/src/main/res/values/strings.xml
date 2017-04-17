@@ -3,4 +3,7 @@
     <string name="facebook_app_id">146493952550441</string>
     <string name="login_cancelled">Login Cancelled!</string>
     <string name="login_failed">Login Failed!</string>
+    <string name="post">Post</string>
+    <string name="save">Save</string>
+    <string name="hint">What would you like to share?</string>
 </resources>

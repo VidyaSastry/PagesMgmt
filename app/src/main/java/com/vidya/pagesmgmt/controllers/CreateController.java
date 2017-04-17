@@ -9,7 +9,7 @@ import com.vidya.pagesmgmt.controllers.requests.Posts;
 
 public class CreateController {
 
-    public static final String PAGE_ID = "244621319339813";
+    private static final String PAGE_ID = "244621319339813";
 
     private void getAccessToken(AccessTokenGenerator.OnAccessTokenGenerated accessTokenGenerated){
         AccessTokenGenerator.newInstance(accessTokenGenerated).generate();

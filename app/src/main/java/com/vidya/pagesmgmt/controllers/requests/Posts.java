@@ -57,8 +57,8 @@ public class Posts {
     }
 
     public interface OnCreatePostsListener{
-        public void onSuccess(String response);
-        public void onFailure(FacebookRequestError error);
+        void onSuccess(String response);
+        void onFailure(FacebookRequestError error);
 
     }
 }

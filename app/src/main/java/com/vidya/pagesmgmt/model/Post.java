@@ -11,16 +11,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * Created by Vidya on 4/10/17.
- */
 
 public class Post {
 
-    public static final String MESSAGE = "message";
-    public static final String ID = "id";
-    public static final String CREATED_TIME = "created_time";
-    public static final String IS_PUBLISHED="is_published";
+    private static final String MESSAGE = "message";
+    private static final String ID = "id";
+    private static final String CREATED_TIME = "created_time";
+    private static final String IS_PUBLISHED="is_published";
 
     private String id;
     private String message;
