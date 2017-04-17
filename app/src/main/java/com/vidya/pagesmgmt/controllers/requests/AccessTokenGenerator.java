@@ -12,9 +12,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Created by Vidya on 4/10/17.
- */
 
 public class AccessTokenGenerator {
 
@@ -42,12 +39,12 @@ public class AccessTokenGenerator {
                                         currentToken.getUserId(), currentToken.getPermissions(),
                                         currentToken.getDeclinedPermissions(), currentToken.getSource(),
                                         currentToken.getExpires(), currentToken.getLastRefresh());
-                                a.onSuccess(new_access_token);
+                                a.onTokenSuccess(new_access_token);
                             } catch (JSONException e){
                                 Log.e(this.getClass().getSimpleName(), e.getMessage());
                             }
                         }
-                        else a.onFailure(response.getError());
+                        else a.onTokenFailure(response.getError());
                     }
                 }
         );
@@ -62,7 +59,7 @@ public class AccessTokenGenerator {
     }
 
     public interface OnAccessTokenGenerated {
-        void onSuccess(AccessToken accessToken);
-        void onFailure(FacebookRequestError error);
+        void onTokenSuccess(AccessToken accessToken);
+        void onTokenFailure(FacebookRequestError error);
     }
 }

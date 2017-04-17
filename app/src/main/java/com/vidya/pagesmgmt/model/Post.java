@@ -20,10 +20,12 @@ public class Post {
     public static final String MESSAGE = "message";
     public static final String ID = "id";
     public static final String CREATED_TIME = "created_time";
+    public static final String IS_PUBLISHED="is_published";
 
     private String id;
     private String message;
     private Date date;
+    private boolean isPublished;
 
     public static List<Post> parseFeed(JSONArray array) throws Exception {
         List<Post> posts = new ArrayList<>(array.length());
@@ -39,6 +41,7 @@ public class Post {
         if (object.has(ID)) this.setId(object.getString(ID));
         if (object.has(CREATED_TIME)) this.setDate(object.getString(CREATED_TIME));
         if (object.has(MESSAGE)) this.setMessage(object.getString(MESSAGE));
+        if (object.has(IS_PUBLISHED)) this.setPublished(object.getBoolean(IS_PUBLISHED));
     }
 
     public String getId() {
@@ -55,6 +58,13 @@ public class Post {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+    public boolean isPublished() {
+        return isPublished;
+    }
+
+    public void setPublished(boolean published) {
+        isPublished = published;
     }
 
     public Date getDate() {

@@ -8,27 +8,25 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
 
-/**
- * Created by Vidya on 4/10/17.
- */
 
 public class Posts {
 
     private GraphRequest graphRequest;
+    private static final String SAVE = "save";
 
-    public Posts(final OnCreatePostsListener a, String pageId, String message, final String p){
+    public Posts(AccessToken accessToken, final OnCreatePostsListener a, String pageId, String message, final String p){
         Bundle params = new Bundle();
         params.putString("message",message);
 
-        if(p.equals("save")){
+        if(p.equals(SAVE)){
             params.putString("published", "false");
-            params.putSerializable("unpublished_content_type", "DRAFT");
+//            params.putSerializable("unpublished_content_type", "DRAFT");
         }
 
 
         this.graphRequest
                 = new GraphRequest(
-                AccessToken.getCurrentAccessToken(),
+                accessToken,
                 "/"+pageId+"/feed",
                 params,
                 HttpMethod.POST,
@@ -37,7 +35,7 @@ public class Posts {
                     @Override
                     public void onCompleted(GraphResponse response) {
                         if(response.getError()==null){
-                            if(!p.equals("save"))
+                            if(!p.equals(SAVE))
                                 a.onSuccess("Published");
                             else
                                 a.onSuccess("Saved");
@@ -50,8 +48,8 @@ public class Posts {
         );
     }
 
-    public static Posts newInstance(OnCreatePostsListener a, String pageId,String message,String params) {
-        return new Posts(a,pageId,message,params);
+    public static Posts newInstance(AccessToken accessToken,OnCreatePostsListener a, String pageId,String message,String params) {
+        return new Posts(accessToken, a,pageId,message,params);
     }
 
     public void fetch(){

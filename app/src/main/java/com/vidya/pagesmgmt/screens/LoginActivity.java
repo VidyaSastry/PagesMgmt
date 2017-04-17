@@ -20,9 +20,9 @@ import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private static final String[] perms = {"manage_pages","publish_actions"};
-    private  static final List<String> PERM = Arrays.asList(perms);
-
+//    private static final String[] perms = {"manage_pages","publish_actions"};
+//    private  static final List<String> PERM = Arrays.asList(perms);
+private static final List<String> PERMISSIONS = Arrays.asList("manage_pages,publish_actions,publish_pages,read_insights");
     protected LoginButton loginButton;
 
     CallbackManager callbackManager;
@@ -66,14 +66,14 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         if(loginButton.getFragment()!=null){
-            LoginManager.getInstance().logInWithPublishPermissions(loginButton.getFragment(),PERM);
+            LoginManager.getInstance().logInWithPublishPermissions(loginButton.getFragment(),PERMISSIONS);
         }else{
-            LoginManager.getInstance().logInWithPublishPermissions(LoginActivity.this,PERM);
+            LoginManager.getInstance().logInWithPublishPermissions(LoginActivity.this,PERMISSIONS);
         }
-
+//
 //        try {
 //            PackageInfo info = getPackageManager().getPackageInfo(
-//                    "com.example.android.pagesmanagementapp",
+//                    "com.vidya.pagesmgmt",
 //                    PackageManager.GET_SIGNATURES);
 //            for (Signature signature : info.signatures) {
 //                MessageDigest md = MessageDigest.getInstance("SHA");
@@ -92,4 +92,5 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
+
 }

@@ -19,7 +19,7 @@ import java.util.List;
 
 public class ViewController {
 
-    public static final String PAGE_ID = "1138448119614327";
+    public static final String PAGE_ID = "244621319339813";
 
     private void getAccessToken(AccessTokenGenerator.OnAccessTokenGenerated accessTokenGenerated){
         AccessTokenGenerator.newInstance(accessTokenGenerated).generate();
@@ -28,11 +28,11 @@ public class ViewController {
     public void getFeed(final OnPostsFetchListener a){
         getAccessToken(new AccessTokenGenerator.OnAccessTokenGenerated() {
             @Override
-            public void onSuccess(AccessToken accessToken) {
+            public void onTokenSuccess(AccessToken accessToken) {
                 Log.i("AccessToken", "onSuccess" + accessToken.getToken());
                 new Feed(new Feed.OnFeedUpdateListener() {
                     @Override
-                    public void onSuccess(GraphResponse response) {
+                    public void onFeedSuccess(GraphResponse response) {
                         try {
                             JSONObject json = response.getJSONObject();
                             Log.i("Feed", "Json " + json.toString() );
@@ -43,7 +43,7 @@ public class ViewController {
                     }
 
                     @Override
-                    public void onFailure(FacebookRequestError error) {
+                    public void onFeedFailure(FacebookRequestError error) {
                         Log.i("Feed", "onFailure");
                         Log.i("Feed", error.getErrorMessage());
                         a.onFailure(error.getErrorMessage());
@@ -52,7 +52,7 @@ public class ViewController {
             }
 
             @Override
-            public void onFailure(FacebookRequestError error) {
+            public void onTokenFailure(FacebookRequestError error) {
                 Log.i("AccessToken", "onFailure");
                 Log.i("AccessToken", error.getErrorMessage());
             }

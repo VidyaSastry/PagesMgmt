@@ -54,7 +54,6 @@ public class HomeActivity extends AppCompatActivity implements OnPostsFetchListe
 
     @Override
     public void onSuccess(List<Post> postList) {
-        Toast.makeText(this, "Feed updated", Toast.LENGTH_LONG).show();
         Log.i(this.getClass().getSimpleName(), postList.toString());
         recyclerViewAdapter = new RecyclerViewAdapter(postList);
         recyclerView.setAdapter(recyclerViewAdapter);

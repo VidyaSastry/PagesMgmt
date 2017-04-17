@@ -16,6 +16,9 @@ public class CreatePostsActivity extends AppCompatActivity implements CreateCont
     EditText message;
     Button post, save;
 
+    private static final String PUBLISH = "publish";
+    private static final String SAVE = "save";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +30,8 @@ public class CreatePostsActivity extends AppCompatActivity implements CreateCont
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!message.getText().equals("")){
-                    new CreateController().createPosts(CreatePostsActivity.this, message.getText().toString(),"publish");
+                if(!message.getText().toString().equals("")){
+                    new CreateController().createPosts(CreatePostsActivity.this, message.getText().toString(),PUBLISH);
                 }else{
                     Toast.makeText(CreatePostsActivity.this,"Please enter message",Toast.LENGTH_LONG).show();
                 }
@@ -39,8 +42,8 @@ public class CreatePostsActivity extends AppCompatActivity implements CreateCont
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!message.getText().equals("")){
-                    new CreateController().createPosts(CreatePostsActivity.this,message.getText().toString(),"save");
+                if(!message.getText().toString().equals("")){
+                    new CreateController().createPosts(CreatePostsActivity.this,message.getText().toString(),SAVE);
                 }else{
                     Toast.makeText(CreatePostsActivity.this,"Please enter message",Toast.LENGTH_LONG).show();
                 }

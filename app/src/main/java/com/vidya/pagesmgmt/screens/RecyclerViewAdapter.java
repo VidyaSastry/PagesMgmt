@@ -1,5 +1,7 @@
 package com.vidya.pagesmgmt.screens;
 
+import android.graphics.Color;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,17 +30,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.post_layout, parent, false);
-        return new CardView(v);
+        return new PostView(v);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         Post p = postList.get(position);
 
-        CardView cardView = (CardView) holder;
-        cardView.setTvMessage(p.getMessage());
-        cardView.setTvDate(p.getDate().toString());
-        cardView.setTvViews("123");
+        PostView postView = (PostView) holder;
+        postView.setTvMessage(p.getMessage());
+        postView.setTvDate(p.getDate().toString());
+        postView.setTvViews(p.getId());
+        if(p.isPublished()) postView.setPublished(true);
+        else postView.setPublished(false);
 
     }
 
@@ -47,16 +51,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         return postList.size();
     }
 
-    private class CardView extends RecyclerView.ViewHolder {
+    private class PostView extends RecyclerView.ViewHolder {
 
         TextView tvMessage, tvDate, tvViews;
+        CardView postView;
 
-        public CardView(View itemView) {
+        public PostView(View itemView) {
             super(itemView);
-            android.support.v7.widget.CardView cardView = (android.support.v7.widget.CardView) itemView.findViewById(R.id.cv_post_card);
-            this.tvMessage = (TextView) cardView.findViewById(R.id.tvMessage);
-            this.tvDate = (TextView) cardView.findViewById(R.id.tvDate);
-            this.tvViews = (TextView) cardView.findViewById(R.id.tvViews);
+            postView = (CardView) itemView.findViewById(R.id.cv_post_card);
+            this.tvMessage = (TextView) postView.findViewById(R.id.tvMessage);
+            this.tvDate = (TextView) postView.findViewById(R.id.tvDate);
+            this.tvViews = (TextView) postView.findViewById(R.id.tvViews);
         }
 
         public void setTvMessage(String tvMessage) {
@@ -65,11 +70,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         public void setTvDate(String tvDate) {
             this.tvDate.setText(tvDate);
+        }
+
+        public void setPublished(boolean b){
+            if(b) postView.setCardBackgroundColor(Color.parseColor("#D3D3D3"));
+            else postView.setCardBackgroundColor(Color.parseColor("#C0C0C0"));
 
         }
 
         public void setTvViews(String tvViews) {
-            this.tvViews.setText(tvViews);
+            this.tvViews.setText("views");
         }
     }
 }

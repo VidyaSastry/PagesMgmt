@@ -19,15 +19,15 @@ public class Feed {
         this.graphRequest
                 = new GraphRequest(
                 AccessToken.getCurrentAccessToken(),
-                "/"+pageId+"/feed",
+                "/"+pageId+"/promotable_posts?fields=id,message,is_published,created_time",
                 null,
                 HttpMethod.GET,
                 new GraphRequest.Callback() {
                     @Override
                     public void onCompleted(GraphResponse response) {
                         if(response.getError() == null) {
-                            a.onSuccess(response);
-                        } else a.onFailure(response.getError());
+                            a.onFeedSuccess(response);
+                        } else a.onFeedFailure(response.getError());
 
                     }
                 }
@@ -43,7 +43,7 @@ public class Feed {
     }
 
     public interface OnFeedUpdateListener {
-        public void onSuccess(GraphResponse response);
-        public void onFailure(FacebookRequestError error);
+        public void onFeedSuccess(GraphResponse response);
+        public void onFeedFailure(FacebookRequestError error);
     }
 }
