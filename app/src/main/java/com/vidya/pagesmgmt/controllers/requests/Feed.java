@@ -15,10 +15,10 @@ public class Feed {
 
     private GraphRequest graphRequest;
 
-    public Feed(final OnFeedUpdateListener a, String pageId) {
+    public Feed(AccessToken accessToken, final OnFeedUpdateListener a, String pageId) {
         this.graphRequest
                 = new GraphRequest(
-                AccessToken.getCurrentAccessToken(),
+                accessToken,
                 "/"+pageId+"/promotable_posts?fields=id,message,is_published,created_time",
                 null,
                 HttpMethod.GET,
@@ -34,8 +34,8 @@ public class Feed {
         );
     }
 
-    public static Feed newInstance(OnFeedUpdateListener a, String pageId) {
-        return new Feed(a, pageId);
+    public static Feed newInstance(AccessToken accessToken, OnFeedUpdateListener a, String pageId) {
+        return new Feed(accessToken, a, pageId);
     }
 
     public void fetch(){

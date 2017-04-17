@@ -13,9 +13,6 @@ import org.json.JSONObject;
 
 import java.util.List;
 
-/**
- * Created by Vidya on 4/10/17.
- */
 
 public class ViewController {
 
@@ -30,7 +27,7 @@ public class ViewController {
             @Override
             public void onTokenSuccess(AccessToken accessToken) {
                 Log.i("AccessToken", "onSuccess" + accessToken.getToken());
-                new Feed(new Feed.OnFeedUpdateListener() {
+                Feed.newInstance(accessToken,new Feed.OnFeedUpdateListener() {
                     @Override
                     public void onFeedSuccess(GraphResponse response) {
                         try {

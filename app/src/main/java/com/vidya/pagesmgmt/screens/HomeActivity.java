@@ -3,6 +3,7 @@ package com.vidya.pagesmgmt.screens;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,6 +22,7 @@ public class HomeActivity extends AppCompatActivity implements OnPostsFetchListe
 
     RecyclerViewAdapter recyclerViewAdapter;
 
+    SwipeRefreshLayout swipeRefreshLayout;
     RecyclerView recyclerView;
 
     FloatingActionButton button;
@@ -32,6 +34,7 @@ public class HomeActivity extends AppCompatActivity implements OnPostsFetchListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
@@ -42,6 +45,14 @@ public class HomeActivity extends AppCompatActivity implements OnPostsFetchListe
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, CreatePostsActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new ViewController().getFeed(HomeActivity.this);
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
     }

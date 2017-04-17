@@ -20,8 +20,6 @@ import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
-//    private static final String[] perms = {"manage_pages","publish_actions"};
-//    private  static final List<String> PERM = Arrays.asList(perms);
 private static final List<String> PERMISSIONS = Arrays.asList("manage_pages,publish_actions,publish_pages,read_insights");
     protected LoginButton loginButton;
 

@@ -73,8 +73,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
 
         public void setPublished(boolean b){
-            if(b) postView.setCardBackgroundColor(Color.parseColor("#D3D3D3"));
-            else postView.setCardBackgroundColor(Color.parseColor("#C0C0C0"));
+            if(b) postView.setCardBackgroundColor(Color.parseColor("#D1E9F9"));
+            else postView.setCardBackgroundColor(Color.parseColor("#C2D4DF"));
 
         }
 

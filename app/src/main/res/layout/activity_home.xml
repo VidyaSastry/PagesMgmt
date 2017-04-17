@@ -7,6 +7,11 @@
     android:layout_height="match_parent"
     tools:context="com.vidya.pagesmgmt.screens.HomeActivity">
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="368dp"
@@ -23,13 +28,17 @@
 
     </android.support.v7.widget.RecyclerView>
 
+    </android.support.v4.widget.SwipeRefreshLayout>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        app:srcCompat="@drawable/ic_create_24dp"/>
+        android:tint="#FFF"
+        app:backgroundTint="@color/com_facebook_button_background_color"
+        app:srcCompat="@drawable/ic_add_black_24dp" />
 
 
 </android.support.design.widget.CoordinatorLayout>
