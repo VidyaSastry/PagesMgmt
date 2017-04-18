@@ -3,12 +3,14 @@ package com.vidya.pagesmgmt.screens;
 import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.vidya.pagesmgmt.R;
+import com.vidya.pagesmgmt.controllers.InsightsController;
 import com.vidya.pagesmgmt.model.Post;
 
 import java.util.List;
@@ -78,8 +80,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         }
 
-        public void setTvViews(String tvViews) {
-            this.tvViews.setText("views");
+        public void setTvViews(String postId) {
+
+            InsightsController.getInsights(postId, new InsightsController.OnInsightsFetchedListener() {
+                @Override
+                public void onSuccess(Integer postViewCount) {
+                    tvViews.setText( postViewCount + " views");
+                }
+
+                @Override
+                public void onFailure(String message) {
+                    Log.i(RecyclerViewAdapter.this.getClass().getSimpleName(),
+                            message);
+                }
+            });
         }
     }
 }
