@@ -8,13 +8,14 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
 
+import static com.vidya.pagesmgmt.controllers.PagePostController.SAVE;
 
-public class Posts {
+
+public class PagePost {
 
     private GraphRequest graphRequest;
-    private static final String SAVE = "save";
 
-    public Posts(AccessToken accessToken, final OnCreatePostsListener a, String pageId, String message, final String p){
+    public PagePost(AccessToken accessToken, final OnCreatePostsListener a, String pageId, String message, final String p){
         Bundle params = new Bundle();
         params.putString("message",message);
 
@@ -48,8 +49,8 @@ public class Posts {
         );
     }
 
-    public static Posts newInstance(AccessToken accessToken,OnCreatePostsListener a, String pageId,String message,String params) {
-        return new Posts(accessToken, a,pageId,message,params);
+    public static PagePost newInstance(AccessToken accessToken, OnCreatePostsListener a, String pageId, String message, String params) {
+        return new PagePost(accessToken, a,pageId,message,params);
     }
 
     public void fetch(){

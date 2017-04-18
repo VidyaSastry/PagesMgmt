@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.vidya.pagesmgmt.screens.CreatePostsActivity">
+    tools:context="com.vidya.pagesmgmt.screens.NewPostActivity">
     <EditText
         android:id="@+id/post_content"
         android:layout_width="match_parent"

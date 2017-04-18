@@ -24,6 +24,14 @@
                 android:textSize="18sp"
                 android:textColor="#000"/>
 
+            <View
+                android:id="@+id/icon_save"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:visibility="gone"
+                android:layout_alignParentEnd="true"
+                android:background="@android:drawable/ic_menu_save" />
+
             <TextView
                 android:id="@+id/tvDate"
                 android:layout_width="wrap_content"

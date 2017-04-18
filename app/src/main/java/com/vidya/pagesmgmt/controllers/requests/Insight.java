@@ -13,11 +13,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class ViewCount {
+public class Insight {
 
     private GraphRequest graphRequest;
 
-    public ViewCount(AccessToken accessToken, final OnReadyListener a, String postId){
+    public Insight(AccessToken accessToken, final OnReadyListener a, String postId){
 
         this.graphRequest
                 = new GraphRequest(
@@ -32,7 +32,7 @@ public class ViewCount {
                         if(response.getError()==null){
                             try {
                                 JSONObject json = response.getJSONObject();
-                                Log.i(ViewCount.this.getClass().getSimpleName(),
+                                Log.i(Insight.this.getClass().getSimpleName(),
                                         json.toString());
                                 JSONArray jsonArray = json.getJSONArray("data");
                                 JSONObject dayViews = jsonArray.getJSONObject(0);
@@ -51,8 +51,8 @@ public class ViewCount {
         );
     }
 
-    public static ViewCount newInstance(AccessToken accessToken, OnReadyListener listener, String postId) {
-        return new ViewCount(accessToken, listener, postId);
+    public static Insight newInstance(AccessToken accessToken, OnReadyListener listener, String postId) {
+        return new Insight(accessToken, listener, postId);
     }
 
     public void fetch(){

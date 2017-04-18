@@ -14,15 +14,15 @@ import org.json.JSONObject;
 import java.util.List;
 
 
-public class ViewController {
+public class FeedController {
 
     private static final String PAGE_ID = "244621319339813";
 
-    private void getAccessToken(AccessTokenGenerator.OnAccessTokenGenerated accessTokenGenerated){
+    private static void getAccessToken(AccessTokenGenerator.OnAccessTokenGenerated accessTokenGenerated){
         AccessTokenGenerator.newInstance(accessTokenGenerated).generate();
     }
 
-    public void getFeed(final OnPostsFetchListener a){
+    public static void getFeed(final OnPostsFetchListener a){
         getAccessToken(new AccessTokenGenerator.OnAccessTokenGenerated() {
             @Override
             public void onTokenSuccess(AccessToken accessToken) {

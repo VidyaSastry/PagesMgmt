@@ -5,7 +5,7 @@ import android.util.Log;
 import com.facebook.AccessToken;
 import com.facebook.FacebookRequestError;
 import com.vidya.pagesmgmt.controllers.requests.AccessTokenGenerator;
-import com.vidya.pagesmgmt.controllers.requests.ViewCount;
+import com.vidya.pagesmgmt.controllers.requests.Insight;
 
 
 public class InsightsController {
@@ -21,8 +21,8 @@ public class InsightsController {
             @Override
             public void onTokenSuccess(AccessToken accessToken) {
                 Log.i("AccessToken", "onSuccess" + accessToken.getToken());
-                ViewCount.newInstance(accessToken,
-                        new ViewCount.OnReadyListener() {
+                Insight.newInstance(accessToken,
+                        new Insight.OnReadyListener() {
 
                     @Override
                     public void onSuccess(Integer viewCount) {

@@ -12,8 +12,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.vidya.pagesmgmt.R;
-import com.vidya.pagesmgmt.controllers.ViewController;
-import com.vidya.pagesmgmt.controllers.ViewController.OnPostsFetchListener;
+import com.vidya.pagesmgmt.controllers.FeedController;
+import com.vidya.pagesmgmt.controllers.FeedController.OnPostsFetchListener;
 import com.vidya.pagesmgmt.model.Post;
 
 import java.util.List;
@@ -41,7 +41,7 @@ public class HomeActivity extends AppCompatActivity implements OnPostsFetchListe
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, CreatePostsActivity.class);
+                Intent intent = new Intent(HomeActivity.this, NewPostActivity.class);
                 startActivity(intent);
             }
         });
@@ -49,7 +49,7 @@ public class HomeActivity extends AppCompatActivity implements OnPostsFetchListe
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                new ViewController().getFeed(HomeActivity.this);
+                FeedController.getFeed(HomeActivity.this);
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
@@ -58,7 +58,7 @@ public class HomeActivity extends AppCompatActivity implements OnPostsFetchListe
     @Override
     protected void onStart() {
         super.onStart();
-        new ViewController().getFeed(this);
+        new FeedController().getFeed(this);
     }
 
     @Override

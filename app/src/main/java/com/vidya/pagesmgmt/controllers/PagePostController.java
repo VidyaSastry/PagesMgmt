@@ -5,26 +5,29 @@ import android.util.Log;
 import com.facebook.AccessToken;
 import com.facebook.FacebookRequestError;
 import com.vidya.pagesmgmt.controllers.requests.AccessTokenGenerator;
-import com.vidya.pagesmgmt.controllers.requests.Posts;
+import com.vidya.pagesmgmt.controllers.requests.PagePost;
 
-public class CreateController {
+public class PagePostController {
 
     private static final String PAGE_ID = "244621319339813";
 
-    private void getAccessToken(AccessTokenGenerator.OnAccessTokenGenerated accessTokenGenerated){
+    public static final String PUBLISH = "publish";
+    public static final String SAVE = "save";
+
+    private static void getAccessToken(AccessTokenGenerator.OnAccessTokenGenerated accessTokenGenerated){
         AccessTokenGenerator.newInstance(accessTokenGenerated).generate();
     }
 
-    public void createPosts(final OnCreateListener a, final String message,final String params){
+    public static void createPosts(final OnCreateListener a, final String message,final String params){
         getAccessToken(new AccessTokenGenerator.OnAccessTokenGenerated(){
             @Override
             public void onTokenSuccess(AccessToken accessToken) {
                 Log.i("new", accessToken.getToken());
-                Posts.newInstance(accessToken, new Posts.OnCreatePostsListener() {
+                PagePost.newInstance(accessToken, new PagePost.OnCreatePostsListener() {
 
                     @Override
                     public void onSuccess(String response) {
-                        a.onCreateSucces(response);
+                        a.onCreateSuccess(response);
                     }
 
                     @Override
@@ -43,7 +46,7 @@ public class CreateController {
     }
 
     public interface OnCreateListener {
-        void onCreateSucces(String result);
+        void onCreateSuccess(String result);
         void onFailure(String message);
     }
 }
